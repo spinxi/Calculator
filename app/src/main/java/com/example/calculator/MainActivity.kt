@@ -8,9 +8,10 @@ import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var textView: TextView
-    private var canAddOperation:Boolean = false
-    private var canAddDecimal:Boolean = false
+    lateinit var textView: TextView;
+    private var canAddOperation:Boolean = false;
+    private var canAddDecimal:Boolean = false;
+    private var canDeleteParentheses:Boolean = false;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun numberAction(view: View) {
+
         if (view is Button) {
             if(view.text == "."){
                 if(canAddDecimal){
@@ -39,6 +41,8 @@ class MainActivity : AppCompatActivity() {
                     canAddDecimal = false
                     canAddOperation = false
                 }
+            }else if(textView.text.isNotEmpty() && textView.text.last() == ')'){
+                canAddOperation = true
             }else{
                 textView.append(view.text)
                 canAddDecimal = true
@@ -50,8 +54,6 @@ class MainActivity : AppCompatActivity() {
     fun equalsAction(view: View){
         if (view is Button) {
             textView.text = calculateResults();
-
-
         }
     }
 
@@ -147,18 +149,29 @@ class MainActivity : AppCompatActivity() {
         val list = mutableListOf<Any>();
 
         var currentDigit = "";
+        var restartIndex: Int? = null;
 
-        for (char in textView.text){
+        for (i in 0 until textView.text.length){
+            val char = textView.text[i];
+
+            if (restartIndex != null && i == restartIndex) {
+                continue;
+            }
 
             if(char.isDigit() || char == '.'){
                 currentDigit += char;
 
-            }else{
+            }else if(char == '('){
+                currentDigit += textView.text[i + 1];
+                restartIndex = i + 1;
+                continue;
 
+            }else if(char == ')'){
+                continue;
+            }else{
                 list.add(currentDigit.toFloat());
                 currentDigit = "";
                 list.add(char);
-
             }
         }
 
@@ -173,26 +186,57 @@ class MainActivity : AppCompatActivity() {
 
 
 
-
-
     fun positiveOrNegativeAction(view: View) {
-        var currentText = textView.text.toString()
 
-        if (currentText.isNotEmpty()) {
-            var currentValue = currentText.toDouble()
-            var newValue = -currentValue
 
-            // Check if the current text starts with a '-' sign
-            if (currentText.startsWith("-")) {
-                // If it starts with '-', remove the '-' sign
-                currentText = currentText.substring(1)
-            } else {
-                // If it doesn't start with '-', add a '-' sign
-                currentText = "-$currentText"
+        var result = positiveOrNegativeOnDigits();
+
+        textView.text = result;
+    }
+
+    private fun positiveOrNegativeOnDigits(): String {
+        var result = textView.text.toString();
+
+
+        if (result.isEmpty()) {
+            return "";
+        }
+        if (result.last() == ')' && !canDeleteParentheses) {
+            val reversedResult = result.reversed();
+            val modifiedResult = reversedResult.replaceFirst("(-", "", true).replaceFirst(")", "", true);
+            val correctedResult = modifiedResult.reversed()
+            canDeleteParentheses = true;
+            return correctedResult;
+        }
+
+
+        if (!result.last().isDigit()) {
+            return result;
+        }
+
+        if (result.isNotEmpty() && result.all { it.isDigit() }) {
+            return "(-$result)";
+        } else {
+            var lastIndex = result.length;
+
+            for (i in result.length - 1 downTo 0) {
+                if (result[i] == ('+') || result[i] == ('-') || result[i] == ('/') || result[i] == ('x')) {
+                    lastIndex = i;
+                    break;
+                }else if (result[i] == ('%')){
+                    return result;
+                }
             }
 
-            textView.text = currentText
+            val lastNumberString = result.substring(lastIndex + 1)
+            val modifiedLastNumber = "(-$lastNumberString)"
+            val modifiedResult = result.substring(0, lastIndex + 1) + modifiedLastNumber
+
+            canDeleteParentheses = false;
+
+            return modifiedResult;
         }
     }
+
 
 }
