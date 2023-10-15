@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        app:layout_constraintBottom_toTopOf="@+id/tableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <EditText
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:gravity="end"
+            android:hint="0"
+            android:inputType="none"
+            android:focusable="false"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
+            android:textSize="55sp"
+
+            />
+    </ScrollView>
+
+    <TableLayout
+        android:id="@+id/tableLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnAc"
+                android:onClick="allClear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#a5a5a5"
+                android:padding="20dp"
+                android:text="AC"
+                android:textColor="#000"
+                android:textSize="35sp" />
+
+            <Button
+                android:onClick="positiveOrNegativeAction"
+                android:id="@+id/btnPlusMinus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#a5a5a5"
+                android:padding="20dp"
+                android:text="±"
+                android:textColor="#000"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btnPercent"
+                android:onClick="operationAction"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#a5a5a5"
+                android:padding="20dp"
+                android:text="%"
+                android:textColor="#000"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btnDivide"
+                android:onClick="operationAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#fea00a"
+                android:padding="20dp"
+                android:text="/"
+                android:textAlignment="center"
+                android:textSize="35sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn7"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="7"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btn8"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="8"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btn9"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="9"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btnMultiply"
+                android:onClick="operationAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#fea00a"
+                android:padding="20dp"
+                android:text="x"
+                android:textAlignment="center"
+                android:textSize="35sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn4"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="4"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="5"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btn6"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="6"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btnMinus"
+                android:onClick="operationAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#fea00a"
+                android:padding="20dp"
+                android:text="-"
+                android:textSize="35sp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn1"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="1"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="2"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="3"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btnPlus"
+                android:onClick="operationAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="1"
+                android:backgroundTint="#fea00a"
+                android:padding="20dp"
+                android:text="+"
+                android:textSize="35sp" />
+        </TableRow>
+
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btn0"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_weight="2"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="0"
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btnDot"
+                android:onClick="numberAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="#333"
+                android:padding="20dp"
+                android:text="."
+                android:textSize="35sp" />
+
+            <Button
+                android:id="@+id/btnEqual"
+                android:onClick="equalsAction"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:backgroundTint="#fea00a"
+                android:padding="20dp"
+                android:text="="
+                android:textSize="35sp" />
+        </TableRow>
+
+    </TableLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
