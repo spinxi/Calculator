@@ -8,7 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
-    lateinit var textView: TextView;
+    lateinit private var textView: TextView;
     private var canAddOperation:Boolean = false;
     private var canAddDecimal:Boolean = false;
     private var canDeleteParentheses:Boolean = false;
@@ -99,12 +99,12 @@ class MainActivity : AppCompatActivity() {
     private fun timesDivision(passedList: MutableList<Any>): MutableList<Any> {
         var list = passedList;
         while (list.contains('x') || list.contains('/') || list.contains('%') ){
-            list = CalculateTimesDivision(list);
+            list = calculateTimesDivision(list);
         }
         return list;
     }
 
-    private fun CalculateTimesDivision(passedList: MutableList<Any>): MutableList<Any> {
+    private fun calculateTimesDivision(passedList: MutableList<Any>): MutableList<Any> {
         val newList = mutableListOf<Any>();
         var restartIndex = passedList.size;
 
